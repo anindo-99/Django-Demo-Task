@@ -1,0 +1,125 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% load embed_video_tags %}
+
+
+{% block title%} Home {% endblock %}
+
+{% block body %}
+
+
+<div class="container text-center my-3">
+  <div class="jumbotron" style="background-color:  rgba(255, 47, 47, 0.3);">
+
+    <div class=" text-white">
+      <h6>पढ़ना हुआ आसान। </h6>
+      <h1>DOUBT?</h1>
+      <p>जो प्रशन पूछता है वह पांच मिनट के लिए मुर्ख बनता है लेकिन जो नहीं पूछता वह जीवन भर मुर्ख बना
+        रहता
+        है. </p>
+      <form method="get" action="search">
+        <input class="form-control mr-sm-2" type="search" placeholder="search your question here " name="search">
+      </form>
+      <!-- <button class="btn btn-info px-5 py-2 primary-btn">
+          Solve Your Doubts
+
+        </button> -->
+
+    </div>
+
+
+  </div>
+</div>
+<!-- Slider -->
+
+
+
+<div id="text" style="font-family: 'Pacifico', cursive; padding-top: 1%; padding-bottom: 2%; color:#fff;">
+  <h1 class="text-center" style="padding-top: 3%;">Our Popular Lectures From You Tube</h1>
+</div>
+<div class="container">
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="container">
+        <div class="carousel-item active">
+          {% video phy.0.lecture '1110x725.6' %}
+        </div>
+        {% for lec in phy|slice:"1:" %}
+        <div class="carousel-item">
+          {% video lec.lecture '1110x725.6' %}
+        </div>
+        {%endfor%}
+      </div>
+
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+
+<!-- Uploaded Lecture Slider -->
+<hr>
+<div id="text" style="font-family: 'Pacifico', cursive; padding-top: 1%; padding-bottom: 2%; color:#fff;">
+  <h1 class="text-center" style="padding-top: 3%;">Our Exclusive Lectures and Contents</h1>
+</div>
+<div class="container">
+  <div id="carouselControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="container">
+        <div class="carousel-item active">
+          <div class=" container col text-white text-center">
+            <div
+              class="row no-gutters border rounded overflow-hidden flex-md-row my-4 shadow-sm h-md-250 position-relative">
+              <div class="col p-4 d-flex flex-column position-static">
+                <strong class="d-inline-block mb-2 text-warning">{{post.0.author}}</strong>
+                <h3 class="mb-0">{{post.0.title}}</h3>
+                <div class="mb-1 text-muted">{{post.timestamp}}</div>
+                <p class="card-text mb-auto">{{post.0.content| truncatechars:500}}</p>
+                <div class="my-2"><a href="/" roll="button" class="btn btn-info">Continue reading</a></div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+        {% for i in post|slice:"1:"%}
+        <div class="carousel-item">
+          <div class=" container col text-white text-center">
+            <div
+              class="row no-gutters border rounded overflow-hidden flex-md-row my-4 shadow-sm h-md-250 position-relative">
+              <div class="col p-4 d-flex flex-column position-static">
+                <strong class="d-inline-block mb-2 text-warning">{{i.author}}</strong>
+                <h3 class="mb-0">{{i.title}}</h3>
+                <div class="mb-1 text-muted">{{i.timestamp}}</div>
+                <p class="card-text mb-auto">{{i.content| truncatechars:200}}</p>
+                <div class="my-2"><a href="/" roll="button" class="btn btn-info">Continue reading</a></div>
+
+              </div>
+
+            </div>
+          </div>
+          {%endfor%}
+        </div>
+
+      </div>
+      <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+
+
+
+
+  {% endblock  %}

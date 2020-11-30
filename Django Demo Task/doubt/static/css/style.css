@@ -1,0 +1,37 @@
+body {
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url(../images/baground.jpg);
+    background-position: center;
+    background-size: cover;
+    overflow-x: hidden;
+    position: relative;
+
+}
+
+
+#navbarSupportedContent ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 25px 25px;
+}
+
+#navbarSupportedContent ul a {
+    color: #ffff;
+    text-decoration: double;
+    font-size: 20px;
+}
+
+#navbarSupportedContent ul li::after {
+    content: '';
+    width: 0;
+    height: 2px;
+    background: yellow;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+
+#navbarSupportedContent ul li:hover::after {
+    width: 100%;
+}
